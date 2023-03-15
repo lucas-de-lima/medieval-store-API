@@ -1,32 +1,32 @@
 import ProductModel from '../models/products.model';
-import Product from '../interfaces/product.interface';
+import IProduct from '../interfaces/product.interface';
 import connection from '../models/connection';
 
 export default class ProductService {
   public model: ProductModel;
 
-  constructor(model: ProductModel = new ProductModel(connection)) {
-
+  constructor() {
+    this.model = new ProductModel(connection);
   }
-}
 
-const getAll = async (): Promise<Product> => {
-  const product = await this.model.getAll();
-  return product;
-};
+  public getAll = async (): Promise<IProduct[]> => {
+    const product = await this.model.getAll();
+    return product;
+  };
+    
+  // public getById = async (id) => {
   
-const getById = async (id) => {
-
-};
-
-const create = async (product) => {
-
-};
-
-const update = async (product, id) => {
-
-};
-
-const remove = async (id) => {
-
-};
+  // };
+  
+  // public create = async (product) => {
+  
+  // };
+  
+  // public update = async (product, id) => {
+  
+  // };
+  
+  // public remove = async (id) => {
+  
+  // };
+}

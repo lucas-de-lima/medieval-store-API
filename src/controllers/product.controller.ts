@@ -1,27 +1,32 @@
+import { Request, Response } from 'express';
 import ProductService from '../services/product.services';
-import Product from '../interfaces/product.interface';
+import statusCodes from './statusCodes';
 
 export default class ProductController {
-  private productService: ProductService;
-  constructor(productService = new ProductService())
-}
+  constructor(private productService = new ProductService()) {}
 
-const getAll = async () => {
-
-};
+  public getAll = async (_req: Request, res: Response) => {
+    const products = await this.productService.getAll();
+    return res.status(statusCodes.OK).json(products);
+  };
+      
+  // public getById = async (req: Request, res: Response) => {
+  //   const { body } = req;
+  //   return res.status(200).json();
+  // };
     
-const getById = async (id) => {
-  
-};
-  
-const create = async (product) => {
-  
-};
-  
-const update = async (product, id) => {
-  
-};
-  
-const remove = async (id) => {
-  
-};
+  // public create = async (req: Request, res: Response) => {
+  //   const { body } = req;
+  //   return res.status(200).json();
+  // };
+    
+  // public update = async (req: Request, res: Response) => {
+  //   const { body } = req;
+  //   return res.status(200).json();
+  // };
+    
+  // public remove = async (req: Request, res: Response) => {
+  //   const { body } = req;
+  //   return res.status(200).json();
+  // };
+}
