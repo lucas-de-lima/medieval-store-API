@@ -1,6 +1,5 @@
-import { Pool, RowDataPacket } from 'mysql2/promise';
+import { Pool, ResultSetHeader, RowDataPacket } from 'mysql2/promise';
 import IProduct from '../interfaces/product.interface';
-// import connection from './connection';
 
 export default class ProductModel {
   public connection: Pool;
@@ -16,18 +15,28 @@ export default class ProductModel {
     return rows as IProduct[];
   };
 
-  // public getById = async (id) => {
-  //   const product = await connection.execute();
+  // public getById = async (id: number): Promise<IProduct> => {
+  //   const product = await this.connection.execute<IProduct & RowDataPacket[]>(
+  //     'SELECT * FROM Trybesmith.products WHERE id = ?',
+  //     [id],
+  //   );
+  //   return product;
   // };
-  
-  // public create = async (product) => {
-  //   const newProduct = await connection.execute();
-  // };
-  
+
+  public create = async (product: IProduct): Promise<IProduct> => {
+    const { name, amount } = product;
+    const [rows] = await this.connection.execute<IProduct & ResultSetHeader >(
+      'INSERT INTO Trybesmith.products (name, amount) VALUE (?, ?)',
+      [name, amount],
+    );
+    const { insertId } = rows;
+    return { id: insertId, ...product } as IProduct;
+  };
+
   // public update = async (product, id) => {
   //   const updatedProduct = await connection.execute();
   // };
-  
+
   // public remove = async (id) => {
   //   await connection.execute();
   // };
