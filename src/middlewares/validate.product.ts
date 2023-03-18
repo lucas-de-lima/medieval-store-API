@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import statusCodes from '../controllers/statusCodes';
-import validateProductsSchema from '../validations/validation';
+import { validateProductsSchema } from '../validations/validation';
 
 const validateProduct = (req: Request, res: Response, next: NextFunction) => {
   const product = req.body;

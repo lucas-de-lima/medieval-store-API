@@ -1,6 +1,7 @@
 import IProduct from '../interfaces/product.interface';
-import productsSchema from './schemas';
+import IUser from '../interfaces/user.interface';
+import { productsSchema, userSchema } from './schemas';
 
-const validateProductsSchema = (product: IProduct) => productsSchema.validate(product);
+export const validateProductsSchema = (product: IProduct) => productsSchema.validate(product);
 
-export default validateProductsSchema;
+export const validateUsersSchema = (user: IUser) => userSchema.validate(user);
