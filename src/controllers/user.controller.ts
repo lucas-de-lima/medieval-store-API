@@ -13,25 +13,10 @@ export default class UserController {
     const products = await this.userService.getAll();
     return res.status(statusCodes.OK).json(products);
   };
-      
-  // public getById = async (req: Request, res: Response) => {
-  //   const { body } = req;
-  //   return res.status(200).json();
-  // };
-    
+  
   public create = async (req: AuthenticatedRequest, res: Response) => {
     const token = req.data; 
     
     return res.status(statusCodes.CREATED).json({ token });
   };
-    
-  // public update = async (req: Request, res: Response) => {
-  //   const { body } = req;
-  //   return res.status(200).json();
-  // };
-    
-  // public remove = async (req: Request, res: Response) => {
-  //   const { body } = req;
-  //   return res.status(200).json();
-  // };
 }

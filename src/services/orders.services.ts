@@ -13,21 +13,4 @@ export default class OrderService {
     const orders = await this.model.getAll();
     return orders;
   };
-    
-  // public getById = async (id) => {
-  
-  // };
-  
-  //   public create = async (user: IOrder): Promise<IOrder> => {
-  //     const newUser = await this.model.create(user);        
-  //     return newUser;
-  //   };
-  
-  // public update = async (product, id) => {
-  
-  // };
-  
-  // public remove = async (id) => {
-  
-  // };
 }

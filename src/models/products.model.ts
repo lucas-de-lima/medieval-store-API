@@ -15,14 +15,6 @@ export default class ProductModel {
     return rows as IProduct[];
   };
 
-  // public getById = async (id: number): Promise<IProduct> => {
-  //   const product = await this.connection.execute<IProduct & RowDataPacket[]>(
-  //     'SELECT * FROM Trybesmith.products WHERE id = ?',
-  //     [id],
-  //   );
-  //   return product;
-  // };
-
   public create = async (product: IProduct): Promise<IProduct> => {
     const { name, amount } = product;
     const [rows] = await this.connection.execute<IProduct & ResultSetHeader >(
@@ -32,12 +24,4 @@ export default class ProductModel {
     const { insertId } = rows;
     return { id: insertId, ...product } as IProduct;
   };
-
-  // public update = async (product, id) => {
-  //   const updatedProduct = await connection.execute();
-  // };
-
-  // public remove = async (id) => {
-  //   await connection.execute();
-  // };
 }

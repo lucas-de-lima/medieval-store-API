@@ -13,21 +13,9 @@ export default class UserService {
     const users = await this.model.getAll();
     return users;
   };
-    
-  // public getById = async (id) => {
-  
-  // };
   
   public create = async (user: IUser): Promise<IUser> => {
     const newUser = await this.model.create(user);        
     return newUser;
   };
-  
-  // public update = async (product, id) => {
-  
-  // };
-  
-  // public remove = async (id) => {
-  
-  // };
 }
