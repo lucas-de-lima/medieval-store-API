@@ -16,3 +16,9 @@ export const loginSchema = Joi.object({
   username: Joi.string().min(3).required(),
   password: Joi.string().min(8).required(),
 });
+
+export const ordersSchema = Joi.object({
+  productsIds: Joi.array().min(1).required().messages({
+    'array.min': '"productsIds" must include only numbers',
+  }),
+});

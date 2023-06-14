@@ -24,4 +24,12 @@ export default class ProductModel {
     const { insertId } = rows;
     return { id: insertId, ...product } as IProduct;
   };
+
+  public insert = async (orderId: number, productId: number): Promise<ResultSetHeader> => {
+    const [rows] = await this.connection.execute<ResultSetHeader>(
+      'UPDATE Trybesmith.products SET order_id = ? WHERE id = ?',
+      [orderId, productId],
+    );    
+    return rows;
+  };
 }

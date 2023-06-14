@@ -20,7 +20,7 @@ const validateToken = (
     return next();
   } catch (error) {
     return res.status(401).json({
-      message: 'Expired or invalid token',
+      message: 'Invalid token',
     });
   }
 };
